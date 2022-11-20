@@ -20,9 +20,9 @@ public class SpamFilter {
 		final HashMap<String, SpamWord> map = new HashMap<String, SpamWord>();
 		final String[] wordObjects = spamRecords.split(";");
 		for (int i = 0; i < wordObjects.length; i++) {
-			final String[] spamObject = wordObjects[i].toLowerCase().replaceAll("[()_] ", "").split(",");
+			final String[] spamObject = wordObjects[i].toLowerCase().replaceAll("[()_]", "").split(",");
 			final String name = spamObject[0].trim();
-			final Double weight = (("".equals(spamObject[1])) ? SpamFilter.spamBoosterFactor : Double.valueOf(spamObject[1].trim()));
+			final Double weight = (("".equals(spamObject[1].trim())) ? SpamFilter.spamBoosterFactor : Double.valueOf(spamObject[1].trim()));
 			final String booster = spamObject[2].trim();
 			final SpamWord spam = new SpamWord(name, weight, booster);
 			map.put(name, spam);
